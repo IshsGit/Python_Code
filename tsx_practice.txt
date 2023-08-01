@@ -1,0 +1,16 @@
+# Set the desired dates for the new commits
+commit_dates=("2023-08-08 12:00:00" "2023-08-09 12:00:00" "2023-08-10 12:00:00")
+
+for new_commit_date in "${commit_dates[@]}"; do
+    # Create a file or make changes to an existing file
+    echo "New commit for ${new_commit_date}" >> new_file.txt
+
+    # Stage the changes
+    git add new_file.txt
+
+    # Commit with the desired date
+    GIT_COMMITTER_DATE="$new_commit_date" git commit -m "New commit for ${new_commit_date}" --date "$new_commit_date"
+done
+
+# Push the commits to the remote repository
+git push origin main
