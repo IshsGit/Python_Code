@@ -192,3 +192,81 @@ class Rectangle(Shapes):
 # c3 = Rectangle(4, 3)
 # c3.area()
 # c3.perimeter()
+# iterate through list from start to end point.
+
+
+class MyMin:
+    def minSub(self, l1, target):
+        start = end = curr_sum = 0
+        min_length = float('inf')
+        for end in range(len(l1)):
+            curr_sum += l1[end]
+            end += 1
+            while curr_sum >= target:
+                min_length = min(min_length, end-start)
+                curr_sum -= l1[start]
+                start += 1
+        if min_length == float('inf'):
+            print("no indices")
+        else:
+            print(min_length)
+
+
+# c1 = MyMin()
+# c1.minSub([2, 3, 1, 2, 4, 3], 7)
+
+"""
+- **Problem: Shortest Unsorted Continuous Subarray**
+  - **Sample Input:** `[2, 6, 4, 8, 10, 9, 15]`
+  - **Sample Output:** `[2, 4, 6, 8, 9, 10, 15]` (Explanation: The subarray [6, 4, 8, 10, 9] is unsorted)
+"""
+
+
+class Solution:
+    def findUnsortedSubarray(self, nums):
+        temp = sorted(nums)
+        if temp[:] == nums[:]:
+            return 0
+        l, r = 0, len(nums)-1
+        for i, x in enumerate(nums):
+            if temp[i] != x:
+                l = i
+                break
+        while temp[r] == nums[r]:
+            r -= 1
+        return r-l+1
+
+
+# c1 = Solution()
+# (c1.findUnsortedSubarray([2, 6, 4, 8, 10, 9, 15]))
+
+
+"""
+- **Problem: Shortest Unsorted Continuous Subarray**
+  - **Sample Input:** `[2, 6, 4, 8, 10, 9, 15]`
+  - **Sample Output:** `[2, 4, 6, 8, 9, 10, 15]` (Explanation: The subarray [6, 4, 8, 10, 9] is unsorted)
+"""
+
+
+class MySortArr:
+    def findSub(self, l1):
+        sorted_list = sorted(l1)
+        start = 0
+        end = len(l1)-1
+        while start < len(l1) and l1[start] == sorted_list[start]:
+            start += 1
+        while end > start and l1[end] == sorted_list[end]:
+            end -= 1
+        sub_length = end-start+1 if start < end else 0
+        print(sub_length)
+
+
+# Example usage:
+# c1 = MySortArr()
+# result = c1.findSub([2, 6, 4, 8, 10, 9, 15])
+
+"""
+- **Problem: Longest Consecutive Increasing Sequence**
+  - **Sample Input:** `[100, 4, 200, 1, 3, 2]`
+  - **Sample Output:** `4` (Explanation: The longest consecutive increasing sequence is [1, 2, 3, 4])
+"""
