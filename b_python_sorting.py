@@ -83,3 +83,21 @@ print(result)
 # end point of previous endpoint, then store
 # those points into a list and append it to
 # a gap list
+
+
+class MyMergeFree:
+    def find_free_time(self, intervals: list) -> list:
+        sorted_intervals = sorted(intervals, key=lambda a: a[0])
+        gap_list = []
+        curr_int = sorted_intervals[0]
+        for i in sorted_intervals[1::]:
+            if i[0] > curr_int[1]:
+                gap_list.append([curr_int[1], i[0]])
+                curr_int = i
+            else:
+                curr_int[1] = max(curr_int[1], i[1])
+        print(gap_list)
+
+
+# c1 = MyMergeFree()
+# c1.find_free_time([[1, 3], [2, 6], [8, 10], [9, 12], [14, 18]])
