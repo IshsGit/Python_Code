@@ -270,3 +270,64 @@ class MySortArr:
   - **Sample Input:** `[100, 4, 200, 1, 3, 2]`
   - **Sample Output:** `4` (Explanation: The longest consecutive increasing sequence is [1, 2, 3, 4])
 """
+
+
+class MyAnagramR:
+    def findAnagrams(self, s: str, p: str) -> list:
+        # have 2 strings, in order check if s contains p
+        # store the starting index
+        if len(s) == 0:
+            print(0)
+        p_freq = {}
+        s_freq = {}
+        indices = []
+
+        for char in p:
+            p_freq[char] = p_freq.get(char, 0)+1
+        for i in range(len(s)-len(p)+1):
+
+            for char in s[i:i+len(p)]:
+                s_freq[char] = s_freq.get(char, 0)+1
+            print("p_freq: ", p_freq)
+            print("s_freq: ", s_freq)
+
+            if p_freq == s_freq:
+                print("i: ", i)
+                indices.append(i)
+            s_freq = {}
+        print(indices)
+
+
+# c1 = MyAnagramR()
+# c1.findAnagrams("cbaebabacd", "abc")
+
+"""
+Problem 1: Two Sum
+Description: Given an array of integers nums and an integer target, 
+return the indices of the two numbers such that they add up to target.
+"""
+
+
+class MyTwoSumR:
+    def twoSum(nums, target):
+        # Create a dictionary to store the indices of visited numbers
+        indices = {}
+
+        # Iterate through the list
+        # Calculate the complement needed to reach the target
+        # Check if the complement is in the dictionary
+        # If yes, return the indices
+        # If not, add the current number and its index to the dictionary
+        for i in range(len(nums)):
+            comp = target-nums[i]
+            if comp in indices:
+                return [indices[comp], i]
+            indices[nums[i]] = i
+
+
+# Technique/Algorithm: Hash Table
+# Example:
+# nums = [2, 7, 11, 15]
+# target = 9
+# print(twoSum(nums, target))
+# Output: [0, 1]
