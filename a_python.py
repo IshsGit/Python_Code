@@ -331,3 +331,19 @@ class MyTwoSumR:
 # target = 9
 # print(twoSum(nums, target))
 # Output: [0, 1]
+class MyRevR:
+    def reverseString(self, s):
+        # Initialize two pointers, left and right
+        # Iterate until left is less than right
+        # Swap characters at the left and right pointers
+        # Move left pointer to the right
+        # Move right pointer to the left
+        print(s[::-1])
+
+
+# Technique/Algorithm: Two-Pointers
+# Example:
+# c1 = MyRevR()
+# c1.reverseString("hello")
+
+# Output: "olleh"
