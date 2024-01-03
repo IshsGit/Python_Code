@@ -38,3 +38,33 @@ class MyRevR:
 # c1.reverseString("hello")
 
 # Output: "olleh"
+
+# # Example usage:
+# head = ListNode(1)
+# head.next = ListNode(2)
+# head.next.next = ListNode(3)
+# head.next.next.next = ListNode(4)
+# head.next.next.next.next = head.next
+
+# # Check for a cycle
+# print(ListSol.hasCycle(head))
+
+class MyLongSub:
+    def lengthOfLongestSubstring(s):
+        # Create a dictionary to store the indices of characters
+        # Initialize two pointers, left and right
+        # Initialize the maximum length variable
+        # Iterate through the string using the right pointer
+        # If the character is in the dictionary and its index is greater than or equal to the left pointer
+        # Update the left pointer to the next index of the repeating character
+        # Update the dictionary with the current character and its index
+        # Update the maximum length if needed
+        indices = {}
+        left = right = 0
+        maximum_length = 1
+        for idx, right in enumerate(s):
+            if right in indices and idx >= left:
+                left = indices[right]+1
+            indices[right] = idx
+            maximum_length = max(maximum_length, idx-left+1)
+        return maximum_length
