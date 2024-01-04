@@ -68,3 +68,34 @@ class MyLongSub:
             indices[right] = idx
             maximum_length = max(maximum_length, idx-left+1)
         return maximum_length
+
+
+class MyisValid():
+    def isValid(self, s) -> str:
+        # Create a stack to keep track of open parentheses
+        # Iterate through the string
+        # If it's an open parenthesis, push it onto the stack
+        # If it's a closing parenthesis, check if the stack is empty
+        # If empty, return False
+        # If not, pop the top element from the stack and check if it matches the current closing parenthesis
+        # If not, return False
+        # Check if the stack is empty at the end
+        s = list(s)
+        open_stack = []
+        parens = {"(": ")", "{": "}", "[": "]"}
+        for p in s:
+            if p in ["(", "[", "{"]:
+                open_stack.append(p)
+            else:
+                if not open_stack:
+                    return False
+                if parens.get(open_stack.pop()) != p:
+                    return False
+        return not open_stack
+
+
+# Technique/Algorithm: Stack
+# Example:
+# c1 = MyisValid()
+# print(c1.isValid("()[]{}"))
+# Output: True
