@@ -24,3 +24,29 @@ class MyProduct:
         for idx, x in enumerate(nums):
             result.append(left_product[idx]*right_product[idx])
         return result
+# Technique/Algorithm: Prefix Product Arrays
+# Example:
+# nums = [1, 2, 3, 4]
+# print(MyProduct.productExceptSelf(nums))
+# Output: [24, 12, 8, 6]
+
+
+"""
+ Sum of Elements in a Range
+Problem: Given an array of integers, precompute the prefix sum 
+array. Implement a function to efficiently calculate the sum 
+of elements in a given range.
+"""
+
+
+class PrefixSum:
+    def __init__(self, nums):
+        # Initialize prefix sum array
+        self.nums = nums
+
+    def range_sum(self, left, right):
+        # Calculate and return the sum of elements in the range [left, right]
+        prefix_sum = self.nums[left]
+        for x in range(left+1, right+1):
+            prefix_sum = prefix_sum+self.nums[x]
+        return prefix_sum
