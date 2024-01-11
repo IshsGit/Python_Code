@@ -41,3 +41,38 @@ class PrefixMax:
 # result = prefix_max.range_max(1, 3)
 
 # print(result)  # Expected Output: 5
+"""
+Problem:
+Given an array of integers, precompute the prefix count array. 
+Implement a function to efficiently count the occurrences of
+a specific value in a given range.
+Counting Occurrences
+Technique: Prefix Count
+Description: The PrefixCount class computes the prefix count 
+of a specific value (e.g., 2) in the input array. The 
+count_occurrences method then calculates the number of 
+occurrences of the value in a given range using the 
+prefix count array.
+"""
+
+
+class PrefixCount:
+    def __init__(self, nums):
+        # Initialize prefix count array
+        self.nums = nums
+
+    def count_occurrences(self, value, left, right):
+        # Count and return the occurrences of 'value' in the range [left, right]
+        count = 0
+        target = value
+        for x in range(left, right+1):
+            if self.nums[x] == target:
+                count += 1
+        return count
+
+
+# Example Usage:note
+# nums = [2, 5, 2, 8, 2, 3, 1, 2]
+# prefix_count = PrefixCount(nums)
+# result = prefix_count.count_occurrences(2, 2, 6)
+# print(result)  # Expected Output: 3
