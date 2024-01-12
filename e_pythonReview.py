@@ -132,3 +132,29 @@ Sample Output: "a2b1c5a3"
 # Approach, want to iterate over the string, concat a new string with current character when a variable count is 0,
 # have a condition to count the number of times the following character is the same
 # Once new character, reset count to 0 and concat the string we created with the current character
+lass MyString:
+    def strComp(self, s):
+        count = 0
+        compressed = ""
+        checkChar = s[0]
+        for c in s:
+            if c != checkChar:
+                compressed += checkChar+str(count)
+                count = 0
+            count += 1
+            checkChar = c
+        compressed += checkChar+str(count)
+        print("compressed: ", compressed)
+
+
+# c1 = MyString()
+# c1.strComp("aabcccccaaa")
+
+"""
+taking two sorted lists as input and merging them into a single sorted list. The input lists are assumed 
+to be already sorted in ascending order, and the goal is to combine them in such a way that the resulting list is also sorted.
+Problem: Merge Sorted Lists
+Sample Input: [1, 3, 5], [2, 4, 6]
+Sample Output: [1, 2, 3, 4, 5, 6]
+"""
+# extend list1 with list2 and sort it then return it
