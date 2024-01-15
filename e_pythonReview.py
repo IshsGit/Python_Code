@@ -155,3 +155,19 @@ Sample Output: {'the': 2, 'quick': 1, 'brown': 1, 'fox': 1, 'jumps': 1, 'over': 
 # Iterate through the string, append an empty dictionary if the key doesn't exist it assigns the current element of the string as a key
 # and the value is initialize to 1, if a following iteration the key exists it increments the counter by 1
 # It returns the dictionary
+
+
+class MyFrequency:
+    def countWords(self, s):
+        strArr = s.split(" ")
+        dict = {}
+        for char in strArr:
+            if not dict.get(char):
+                dict[char] = 1
+            else:
+                dict[char] += 1
+        print(dict)
+
+
+# c1 = MyFrequency()
+# c1.countWords("the quick brown fox jumps over the lazy dog")
