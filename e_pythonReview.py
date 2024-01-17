@@ -215,3 +215,51 @@ class MyHigh:
 
 # c1 = MyHigh()
 # c1.squareAll(lambda a: a**2, [1, 3])
+"""
+Problem: Geometry Classes
+involves creating classes for basic geometric shapes, such as a circle and a rectangle.
+ Each class should have methods to calculate the area and perimeter of the shape based 
+ on its specific attributes. The problem provides sample input involving instances of 
+ the Circle and Rectangle classes, and the desired output includes the calculated area and perimeter for each shape.
+Sample Input: Circle(radius=5), Rectangle(length=4, width=3)
+Sample Output: Area: 78.54, Perimeter: 31.42 (for Circle), Area: 12, Perimeter: 14 (for Rectangle)
+"""
+
+
+class Shapes:
+    def __init__(self, l, w, r):
+        self.l = l
+        self.w = w
+        self.r = r
+
+
+class Circle(Shapes):
+    def __init__(self, r):
+        super().__init__(None, None, r)
+
+    def area(self):
+        print(float(math.pi*(self.r**2)))
+
+    def perimeter(self):
+        print(float(2*math.pi*self.r))
+
+
+class Rectangle(Shapes):
+
+    def __init__(self, l, w):
+        super().__init__(l, w, None)
+
+    def area(self):
+        print(float(self.l*self.w))
+
+    def perimeter(self):
+        print(float(2*(self.l+self.w)))
+
+
+# c1 = Shapes(4, 3, 5)
+# c2 = Circle(5)
+# c2.area()
+# c2.perimeter()
+# c3 = Rectangle(4, 3)
+# c3.area()
+# c3.perimeter()
