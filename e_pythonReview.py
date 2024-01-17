@@ -171,3 +171,47 @@ class MyFrequency:
 
 # c1 = MyFrequency()
 # c1.countWords("the quick brown fox jumps over the lazy dog")
+"""
+If-Else, While Loops, For Loops:
+Problem: Palindrome Check
+determining whether a given input string is a palindrome or not. A palindrome is a sequence of characters 
+that reads the same forwards as backward, ignoring spaces, punctuation, and capitalization.
+Sample Input: "radar"
+Sample Output: True
+"""
+
+
+class MyPalindrome:
+    def isPalindrome(self, word):
+        rev = ""
+        for char in word[::-1]:
+            rev += char
+        print("rev: ", rev)
+        if rev == word:
+            print("Is palindrome")
+        else:
+            print("not palindrome")
+
+
+# c1 = MyPalindrome()
+# c1.isPalindrome("radar")
+"""
+Functions, Lambda:
+Problem: High-Order Function
+ involves the application of a given function to a range of input values, producing a list of corresponding output values.
+A high-order function typically takes another function as an argument or returns a function as its result.
+Sample Input: f(x) = x^2, range [1, 3]
+Sample Output: [1, 4, 9]
+"""
+
+
+class MyHigh:
+    def squareAll(self, fcn, input_range):
+        outputList = []
+        for x in range(input_range[0], input_range[-1]+1):
+            outputList.append(fcn(x))
+        print(outputList)
+
+
+# c1 = MyHigh()
+# c1.squareAll(lambda a: a**2, [1, 3])
