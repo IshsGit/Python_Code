@@ -263,3 +263,66 @@ class Rectangle(Shapes):
 # c3 = Rectangle(4, 3)
 # c3.area()
 # c3.perimeter()
+class MyAnagram:
+    def sortAnagram(self, s1, s2):
+        output_list = []
+        s1Arr = list(s1)  # Splitting into individual characters
+        s2Arr = list(s2)
+        if len(s1Arr) > len(s2Arr):
+            longest = s1Arr
+            shortest = s2Arr
+        else:
+            longest = s2Arr
+            shortest = s1Arr
+        i = 0
+        for x in longest:
+            if x == shortest[i] and longest.index(x) not in output_list:
+                output_list.append(longest.index(x))
+                i += 1
+
+        print(sorted(output_list))
+
+
+# c1 = MyAnagram()
+# c1.sortAnagram("cbaebabacd", "abc")
+"""
+Problem: Maximum Subarray Sum
+Given an array of integers, find the contiguous subarray with the largest sum. The task is to determine the sum of this subarray.
+For example, consider the array [-2,1,-3,4,-1,2,1,-5,4]. The contiguous subarray [4,-1,2,1] has the largest sum, which is 6. 
+The goal is to devise an algorithm to efficiently compute the maximum sum of a subarray for a given array of integers.
+ **Problem: Maximum Subarray Sum**
+  - **Sample Input:** `[-2,1,-3,4,-1,2,1,-5,4]`
+  - **Sample Output:** `6` (Explanation: The contiguous subarray [4,-1,2,1] has the largest sum)
+
+update the problem with a problem description, do not give me the solution
+"""
+
+
+class MaxSubSum:
+    def findSum(self, l1):
+        idx_window = 1
+        max_sum = 0
+        for start in range(len(l1)):
+            idx_window = start+1
+            while idx_window <= len(l1)-1:
+                curr_sum = sum(l1[start:idx_window])
+                max_sum = max(max_sum, curr_sum)
+                idx_window += 1
+        print(max_sum)
+
+
+# c1 = MaxSubSum()
+# c1.findSum([-2, 1, -3, 4, -1, 2, 1, -5, 4])
+
+# `Kadane's algorithm`
+class Kalgo:
+    def maxSum(self, l1):
+        max_current = max_global = l1[0]
+        for num in l1[1::]:
+            max_current = max(num, max_current+num)
+            max_global = max(max_current, max_global)
+        return (max_global)
+
+
+# c1 = Kalgo()
+# c1.maxSum([-2, 1, -3, 4, -1, 2, 1, -5, 4])
