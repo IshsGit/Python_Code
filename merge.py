@@ -9,7 +9,7 @@ def maxEvents(arrival, duration):
     overlap = [merged[0]]
     endtime = merged[0][1]
     for interval in merged[1::]:
-        # merged[-1][1] will always have the latest time/endtime
+
         print(endtime)
         if interval[0] > overlap[-1][1] & interval[1] > endtime:
             maxEvents += 1
