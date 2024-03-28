@@ -28,3 +28,33 @@
 # The name of a file contains at least a period and an extension.
 
 # The name of a directory or sub-directory will not contain a period.
+
+def length_longest_path(file_system):
+    if not file_system:
+        return 0
+
+    paths = file_system.split('\n')
+    stack = []
+    max_length = 0
+
+    for path in paths:
+        depth = path.count('\t')
+        name = path.replace('\t', '')
+
+        while stack and stack[-1][0] >= depth:
+            stack.pop()
+
+        if '.' in name:  # File found
+            file_path_length = sum(len(stack[i][1]) for i in range(
+                len(stack))) + len(stack) + len(name)
+            max_length = max(max_length, file_path_length)
+        else:  # Directory found
+            stack.append((depth, name))
+
+    return max_length
+
+
+file_system1 = "dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext"
+file_system2 = "dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext"
+print(length_longest_path(file_system1))  # Output: 20
+print(length_longest_path(file_system2))  # Output: 32
