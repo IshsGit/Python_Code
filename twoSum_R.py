@@ -66,22 +66,22 @@ class findingDuplciates:
 # Problem: Given a string s, find the first non-repeating character in it
 # and return its index. If it does not exist, return -1.
 
-class Frequency:
-    def solution(s):
-        freq = {}
-        for idx, ch in enumerate(s):
-            if ch not in freq:
-                freq[ch] = 1
-            else:
-                freq[ch] += 1
+# class Frequency:
+#     def solution(s):
+#         freq = {}
+#         for idx, ch in enumerate(s):
+#             if ch not in freq:
+#                 freq[ch] = 1
+#             else:
+#                 freq[ch] += 1
 
-        for idx, ch in enumerate(s):
-            if freq[ch] == 1:
-                return idx
+#         for idx, ch in enumerate(s):
+#             if freq[ch] == 1:
+#                 return idx
 
 
-d
-return -1
+# d
+# return -1
 
 
 # Example 2
@@ -93,8 +93,8 @@ return -1
 # Problem: Given two strings s and t, return true if t is an anagram of s, and false otherwise.
 
 # Example 1
-s = "anagram"
-t = "nagaram"
+# s = "anagram"
+# t = "nagaram"
 # Output: true
 
 # # Example 2
@@ -106,3 +106,37 @@ t = "nagaram"
 # s = "listen"
 # t = "silent"
 # Output: true
+
+# Longest Substring Without Repeating Characters
+# Description: Given a string s, find the length of the longest substring without repeating characters.
+
+# Consider a substring, and longest
+# define longest outside the loop
+# itr to the last character of the string
+# Every itr, we make a substring
+# if the ch is in substring, set longest to the curr substring, set substring to ""
+# return longest
+
+class Solution:
+    def longSub(s):
+        if not s:
+            return 0
+
+        longest = 1
+        substr = s[0]
+
+        for ch in (s[1::]):
+            if ch in substr:
+                longest = max(longest, len(substr))
+                substr = substr[substr.index(ch)+1::] + ch
+                print("new substr: ", substr)
+            else:
+                substr += ch
+                longest = max(len(substr), longest)
+
+        print("final: ", substr)
+        return longest
+
+
+# s = "dvdf"
+# print(Solution.longSub(s))
